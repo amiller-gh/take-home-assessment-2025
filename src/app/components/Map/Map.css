@@ -1,0 +1,33 @@
+.map {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: var(--colors-sl-blue-800);
+
+  margin: 0;
+}
+
+.map__svg {
+  width: 100%;
+  height: auto;
+}
+
+.map__state {
+  fill: var(--colors-sl-blue-300);
+  stroke: var(--colors-sl-blue-800);
+  stroke-width: 2px;
+}
+
+.map__state--active {
+  fill: var(--colors-sl-pink-500)
+}
+
+@media (width <= 820px) {
+  .map {
+    display: none;
+  }
+}

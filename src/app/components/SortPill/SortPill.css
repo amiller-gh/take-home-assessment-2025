@@ -1,0 +1,68 @@
+.sort-pill {
+  position: relative;
+
+  width: fit-content;
+
+  margin: 0;
+  padding: 0;
+  border: none;
+
+  color: black;
+  white-space: pre;
+}
+
+.sort-pill__checkbox {
+  position: absolute;
+  opacity: 0%;
+}
+
+.sort-pill__checkbox:checked + .sort-pill__label {
+  --icon: '\f0de';
+  background-color: var(--colors-green-600);
+  color: white;
+
+  border-color: var(--colors-green-600);
+}
+
+
+.sort-pill__checkbox:indeterminate + .sort-pill__label,
+.sort-pill--indeterminate .sort-pill__checkbox + .sort-pill__label {
+  --icon: '\f0dc';
+  opacity: 45%
+}
+
+.sort-pill:not(.sort-pill--indeterminate) .sort-pill__checkbox:not(:checked, :indeterminate) + .sort-pill__label {
+  --icon: '\f0dd';
+  background-color: var(--colors-sl-red-600);
+  color: white;
+
+  border-color: var(--colors-sl-red-600);
+}
+
+.sort-pill__label {
+  cursor: pointer;
+  user-select: none;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  width: 100%;
+  height: 2.6rem;
+
+  padding: 0 0.8rem;
+  border: 1px solid var(--colors-sl-blue-900);
+  border-radius: 0.4rem;
+
+  font-size: 1.4rem;
+
+  transition: opacity .18s ease-in-out, color .18s ease-in-out, border-color .18s ease-in-out, background-color .18s ease-in-out;
+
+  gap: 0.6rem;
+}
+
+.sort-pill__label::before {
+  content: var(--icon);
+  font-family: 'fontawesome';
+  
+}

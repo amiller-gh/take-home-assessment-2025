@@ -1,54 +1,27 @@
 # SL/VF Technical Take Home
+Demo Site: https://swing-left.vercel.app
 
-> Build a state voter registration search tool
+![Site Preview](https://repository-images.githubusercontent.com/1097743852/e961394b-d913-4f6c-af36-9dff07c69379)
 
-- [Evaluation](#evaluation)
-- [What we are looking for](#what-we-are-looking-for)
-- [Submitting your code](#submitting-your-code)
-- [Questions](#questions)
-- [Running the code](#running-the-code)
+## Technical Details
+Database creation and cleanup scripts still live in the `scripts` directory, but has been converted to ESM and pulls their config from a new `.env` file in the root of the project.
 
-## Evaluation
+Data is ingested with DBT. The sample CSV is in `data/swingleft/seeds` with another seed file to help with state name normalization. There is a single model in `data/swingleft/models` that hammers both files into shape and loads it into Postgres.
 
-1. Using the provided `voter_registration_deadlines.csv`, use the language and ORM framework of your choice to parse and store the info from `voter_registration_deadlines.csv` for each state into a SQL database (this is already done in the sample provided). _*Note: This is a sample of old data taken from various voter registration sites in 2018, and does not represent the current reality of these states. It should only be used for the purposes of this exercise.*_
-2. Create a UI that displays the list of all the states and their voter information. The user should be able to filter and sort this table.
-3. Create an API endpoint that will retrieve the data for this table from the backend DB.
-4. Write tests to validate the API call(s).
-5. Include a README (or edit this one if you choose to fork this repository) that describes the steps necessary for building and running the application as well as running the tests locally.
+The fontend still uses Next.js. No frontend component framework was used. Test POC is written with Playwright. I've included additional stylelint and eslint configs.
 
-You may use any pattern or library that you find suitable to accomplish this assessment, however preference will be given to candidates that show they are able to use at least some of our technologies. Internally, we use Python and SQL Alchemy (SwingLeft) or NodeJS and Knex (VoteForward) backend and for the frontend we use React with Panda-UI and Chakra-UI for styling on the Next.Js framework.
+Node's Postgres config lives in the `.env` file. DBT's Postgres config is located in `data/swingleft/profile.yml`. In an ideal world we would have a single source of truth.
 
-Additionally, we have provided a sample hello-world framework which you may modify and use for this exercise. This sample already imports the voter data into a postgres DB, and sets up an API endpoint and frontend page for you to work from or use as an example.
+A demo version of the site is deployed to Vercel at https://swing-left.vercel.app. To support this without having to spin up a production API server and Postgres database, the API response is mocked in `src/app/assets/data/mock.ts` and used as a fallback if data can not be loaded from the API. In dev mode, the site will use the API and local Postgres database. If run in prod with `yarn build && yarn start` it will use this mock data as a fully static website.
 
-You are welcome to use AI tools on your code test. If you do, please submit your _entire chat transcript_. The mechanism to do this will depend on which tool you use. If you use a command line tool such as Claude Code, you can store a transcript via the "script" command on Mac and Unix/Linux systems. You can also include a zip of ~/.claude/projects/code-test (or similar) if you prefer, but please ensure you do not send materials for any other projects.
-
-Alternatively, you may submit an equivalent open-source code sample. If you do this, please only submit samples where you are the only contributor and sole author, or point us at specific commits where you were the sole author. As before, if you used AI to help generate the work, please give a detailed description of how it was used. If you choose to go with this route, please include as much detail as possible about which factors of your sample we should evaluate, and be prepared to discuss your code sample in the follow-up interview.
-
-## What we are looking for
-
-- Does it work? _*Note that you can "mock" an aspect of your solution rather than fully implement it, for example if a feature you want to demonstrate requires additional data. Just be clear in your submission notes what was mocked.*_
-- Is the code clean and accessible to others?
-- Does the code handle edge case conditions?
-
-For the UX, we do not expect a fancy graphic design or style, but please make sure that the UI is clean and usable on both desktop and mobile web browsers.
-
-## Submitting Your Code
-
-The preferred way to submit your code is to create a fork of this repository, push your changes to the forked reposistory, and then grant access to your forked repository to your interviewer. Your interviewer is listed in the email you received inviting you to this technical interview.
-
-Alternatively, you may submit the code in the form of a zip file and email it to your interviewer. If you do this, please be sure to include a README in your submission with full details on how to set up and run your code.
-
-## Questions
-
-If you have any questions, please reply to the invitation email you were sent for this technical interview.
-
-## Running The Code
-
-[If you choose to clone this repo and work from the hello-world sample, please use the directions below. If you implement another solution using a different language or framework, please update these directions to reflect your code.]
-
-### Installation
-
-1. pull down the repo.
-2. `npm install --no-save`
-3. `npm run db:create-db`
-4. `npm run dev`
+## Running the Project
+1. Pull down the repo.
+2. Install DBT `pip install dbt-core dbt-postgres`
+3. Run PostgreSQL Locally (e.g. with https://postgresapp.com)
+4. Ensure PostgreSQL has a user `postgres` with password `test`.
+5. Install dependencies with `npm install` or `yarn`
+6. Bootstrap the database by running `npm run bootstrap` or `yarn bootstrap`
+7. Run tests with `npm run test` or `yarn test`
+8. Run the project with `npm run dev` or `yarn dev`
+9. Visit the site at http://localhost:3000
+10. Clean up your postgres DB with `npm run cleanup` or `yarn cleanup`

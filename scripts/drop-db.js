@@ -1,31 +1,21 @@
-const { Client } = require("pg");
-
-// Update these values with your PostgreSQL credentials
-const user = "postgres";
-const password = "test";
-const host = "localhost";
-const port = 5432;
-const databaseToDrop = "state_registration_deadlines";
+import 'dotenv/config';
+import { Client } from "pg";
 
 // Connect to the default 'postgres' database
 const client = new Client({
-    user,
-    host,
+    user: process.env.PG_USER,
+    host: process.env.PG_HOST,
     database: "postgres",
-    password,
-    port,
+    password: process.env.PG_PWD,
+    port: process.env.PG_PORT,
 });
 
-async function dropDatabase() {
-    try {
-        await client.connect();
-        await client.query(`DROP DATABASE IF EXISTS ${databaseToDrop};`);
-        console.log(`Database "${databaseToDrop}" dropped successfully.`);
-    } catch (err) {
-        console.error("Error dropping database:", err);
-    } finally {
-        await client.end();
-    }
+try {
+    await client.connect();
+    await client.query(`DROP DATABASE IF EXISTS ${process.env.PG_DB};`);
+    console.log(`Database "${process.env.PG_DB}" dropped successfully.`);
+} catch (err) {
+    console.error("Error dropping database:", err);
+} finally {
+    await client.end();
 }
-
-dropDatabase();

@@ -1,0 +1,18 @@
+.logo {
+  position: relative;
+  flex: 0 0 auto;
+
+  width: 66%;
+  max-width: 28rem;
+
+  margin: 1.8rem;
+
+  /* For visual vertical alignment */
+  transform: translateY(-8%)
+}
+
+@media (width <= 820px) {
+  .logo {
+    width: 33%
+  }
+}

@@ -1,0 +1,104 @@
+@import "./theme.css";
+
+body {
+  padding-left: 40vw;
+}
+
+.nav {
+  position: fixed;
+  display: flex;
+
+  width: 40vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+
+  background-color: var(--colors-sl-blue-800);
+
+  flex-flow: column;
+}
+
+.nav__title {
+  margin: 1.8rem;
+  font-size: 3.8vw;
+  text-transform: uppercase;
+}
+
+.nav__title-highlight {
+  display: block;
+  color: var(--colors-sl-pink-500);
+  font-size: 6.8vw;
+}
+
+.main {
+  --card-height: 13.8rem;
+  --search-height: 12.8rem;
+  --scroll-padding: 2.8rem;
+  --max-list-width: 68rem;
+
+  position: fixed;
+  display: flex;
+  overflow: visible;
+
+  width: 60vw;
+  max-height: 100vh;
+  top: 0;
+  left: 40vw;
+
+  flex-flow: column;
+}
+
+.main::before {
+  content: "\f0da";
+  box-sizing: border-box;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+
+  width: 4.8rem;
+  height: 4.8rem;
+  top: calc(var(--search-height) + (var(--card-height) * .5) + var(--scroll-padding));
+  left: -3.8rem;
+
+  background-color: var(--colors-sl-yellow-500);
+  box-shadow: 0 0 0 2px var(--colors-sl-blue-800);
+
+  border-radius: 0.2rem;
+
+  color: var(--colors-sl-blue-900);
+  font-family: 'fontawesome';
+  font-size: 4.2rem;
+  line-height: 5.2rem;
+
+  transform: translateY(-50%);
+}
+
+@media (width <= 820px) {
+  body {
+    padding-left: 0;
+  }
+  .nav {
+    position: relative;
+    display: flex;
+
+    width: 100vw;
+    height: fit-content;
+
+    flex-flow: row;
+  }
+  .main {
+    position: relative;
+
+    width: 100%;
+    height: unset;
+    max-height: unset;
+    top: unset;
+    left: unset;
+  }
+  .main::before {
+    display: none;
+  }
+}
+

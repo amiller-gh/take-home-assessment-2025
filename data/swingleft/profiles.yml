@@ -1,0 +1,12 @@
+swingleft:
+  outputs:
+    dev:
+      dbname: swingleft
+      host: localhost
+      pass: test
+      port: 5432
+      schema: public
+      threads: 1
+      type: postgres
+      user: postgres
+  target: dev

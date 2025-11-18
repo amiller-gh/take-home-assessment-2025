@@ -1,0 +1,27 @@
+{
+  "cSpell.words": [
+    "ISQL",
+    "VARCHAR",
+    "autobind",
+    "phonebank",
+    "rowid"
+  ],
+  "workbench.colorCustomizations": {},
+  "sqltools.useNodeRuntime": true,
+  "editor.tabSize": 2,
+  "eslint.autoFixOnSave":  true,
+  "eslint.validate":  [
+    "javascript",
+    "javascriptreact",
+    {"language":  "typescript",  "autoFix":  true  },
+    {"language":  "typescriptreact",  "autoFix":  true  }
+  ],
+  "stylelint.configBasedir": "./typescript",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit"
+  },
+  "python.analysis.extraPaths": [
+    "./python/src"
+  ],
+}

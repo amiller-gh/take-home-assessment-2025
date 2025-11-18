@@ -1,0 +1,97 @@
+/* stylelint-disable color-no-hex */
+
+@font-face {
+  font-family: "fontawesome";
+
+  src: url("./assets/fonts/fontawesome/fa-solid-900.woff2?asdf");
+}
+
+:root {
+  /* Stolen with love from the SwingLeft website */
+  --serif-font: "bitter", serif;
+  --sans-serif-font: "ff-good-web-pro-condensed", sans-serif;
+  --colors-sl-blue-100: #fafdfb;
+  --colors-sl-blue-200: #e6f6fb;
+  --colors-sl-blue-300: #baefff;
+  --colors-sl-blue-500: #00c4ff;
+  --colors-sl-blue-800: #0a2852;
+  --colors-sl-blue-900: #00183c;
+  --colors-sl-gray-100: #f5f5f5;
+  --colors-sl-gray-200: #eeeeee;
+  --colors-sl-gray-400: #e8ebeb;
+  --colors-sl-gray-500: #bcc5cc;
+  --colors-sl-gray-600: #b6bfcb;
+  --colors-sl-gray-700: #5a5a5a;
+  --colors-sl-gray-800: #676767;
+  --colors-sl-gray-900: #444444;
+  --colors-sl-pink-100: #ffc3c6;
+  --colors-sl-pink-500: #ff5c66;
+  --colors-sl-purple-100: #e5bcff;
+  --colors-sl-purple-200: #e6e6fa;
+  --colors-sl-purple-500: #8f00e8;
+  --colors-sl-purple-700: #412341;
+  --colors-sl-red-500: #ff5c66;
+  --colors-sl-red-600: #e7263b;
+  --colors-sl-red-700: #8d0033;
+  --colors-sl-spring-wood: #fcfdfb;
+  --colors-sl-gray-blue: #9fb4d1;
+  --colors-sl-white: #fbfdfb;
+  --colors-sl-tan: #edebe4;
+  --colors-sl-yellow-500: #ffff28;
+  --colors-sl-yellow-700: #f3cf4e;
+  --colors-green-50: #f0fdf4;
+  --colors-green-100: #dcfce7;
+  --colors-green-200: #bbf7d0;
+  --colors-green-300: #86efac;
+  --colors-green-400: #4ade80;
+  --colors-green-500: #22c55e;
+  --colors-green-600: #16a34a;
+  --colors-green-700: #15803d;
+  --colors-green-800: #166534;
+  --colors-green-900: #14532d;
+  --colors-green-950: #052e16;
+
+  background-color: var(--colors-sl-gray-100);
+
+  margin: 0;
+  padding: 0;
+
+  font-family: var(--serif-font);
+
+  /* Thank you REM units for relative typography */
+  font-size: min(0.902856vw, 10px);
+  font-weight: 400;
+  line-height: 1.2;
+
+  background-repeat: no-repeat;
+
+  color-scheme: light dark;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-synthesis: none;
+}
+
+* {
+  -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: transparent;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--sans-serif-font);
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* Thank you REM units for relative typography */
+@media (width <= 820px) {
+  :root {
+    font-size: 9px;
+  }
+}
